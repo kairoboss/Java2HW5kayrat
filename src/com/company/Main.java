@@ -11,9 +11,8 @@ public class Main {
         Semaphore sem1 = new Semaphore(1);
         Semaphore sem = new Semaphore(3);
         CountDownLatch CDL = new CountDownLatch(25);
-        for (int i = 0; i <501 ; i+=20){
-            new Uploader(CDL,i,sem1).start();}
-
+        Uploader uploader = new Uploader(CDL);
+        uploader.start();
         try {
             CDL.await();
         } catch (InterruptedException e) {
